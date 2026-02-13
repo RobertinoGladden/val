@@ -18,7 +18,8 @@
         
         body, html { 
             margin: 0; padding: 0; background: var(--bg); 
-            font-family: 'Lora', serif; overflow-x: hidden; 
+            font-family: 'Lora', serif; /* Font dasar meliuk */
+            overflow-x: hidden; 
             color: var(--text); height: 100%; width: 100%; 
         }
 
@@ -74,6 +75,17 @@
         .card-frame::before { top: 20px; left: 20px; border-right: none; border-bottom: none; }
         .card-frame::after { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
+        /* Gaya teks meliuk untuk judul dan kutipan */
+        h1, h2 { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-weight: 700; 
+            margin: 0; 
+        }
+
+        p { font-style: italic; color: #555; }
+
+        /* Gaya tombol tetap tegas (Inter) sesuai gambar */
         .btn-universal {
             margin-top: 35px; 
             padding: 16px 45px; 
@@ -83,7 +95,7 @@
             cursor: pointer; 
             font-family: 'Inter', sans-serif; 
             font-size: 13px; 
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 2px; 
             border-radius: 50px;
             text-transform: uppercase;
@@ -99,6 +111,7 @@
             border-radius: 50px;
             cursor: pointer; 
             font-family: 'Inter', sans-serif;
+            font-weight: 600;
             transition: 0.2s; 
             font-size: 12px;
             z-index: 100;
@@ -112,7 +125,7 @@
         #letter-page { display: none; height: 100vh; position: fixed; padding: 40px 20px; overflow-y: auto; background: var(--bg); z-index: 100; width: 100%; opacity: 0; transition: opacity 1.5s ease; }
         .letter-wrap { max-width: 550px; width: 100%; background: white; padding: 60px 40px; border-radius: 20px; line-height: 2.2; text-align: left; margin: 40px auto; box-shadow: 0 25px 70px var(--shadow); border: 1px solid #f0f0f0; }
         
-        .reply-btn { display: block; margin-top: 50px; padding: 20px; background: var(--accent); color: #fff; text-decoration: none; font-family: 'Lora', serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; text-align: center; text-transform: uppercase; border-radius: 50px; }
+        .reply-btn { display: block; margin-top: 50px; padding: 20px; background: var(--accent); color: #fff; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; text-align: center; text-transform: uppercase; border-radius: 50px; }
     </style>
 </head>
 <body>
@@ -125,26 +138,22 @@
 
     <section id="landing">
         <div class="card-frame">
-            <h2 style="font-style: italic; color: #444;">I have something for you<br>to make your day today.</h2>
+            <h2 style="font-size: 24px; color: #444;">I have something for you<br>to make your day today.</h2>
             <button class="btn-universal" onclick="startExperience()">Open</button>
         </div>
     </section>
 
     <section id="special-msg" style="display:none; opacity:0;">
         <div class="card-frame">
-            <p style="font-size: 10px; letter-spacing: 3px; color: #bbb; text-transform: uppercase; margin-bottom: 20px;">A Message for You</p>
-            <h1 style="font-size: 24px; line-height: 1.6; font-style: italic; color: var(--text);">
-                "I want to celebrate today by showing you how much you mean to me. You are the most special part of my life."
-            </h1>
+            <p style="font-family: 'Inter', sans-serif; font-style: normal; font-size: 10px; letter-spacing: 3px; color: #bbb; text-transform: uppercase; margin-bottom: 20px; font-weight: 600;">A Message for You</p>
+            <h1 style="font-size: 26px; line-height: 1.5;">"I want to celebrate today by showing you how much you mean to me. You are the most special part of my life."</h1>
             <button class="btn-universal" onclick="goToQuestion()">Continue</button>
         </div>
     </section>
 
     <section id="question-page" style="display:none; opacity: 0;">
-        <h1 style="font-style: italic; font-weight: 700; font-size: 28px; line-height: 1.4; max-width: 80%;">
-            "Be my Valentine?"
-        </h1>
-        <p style="font-style: italic; color: #777; margin-top: 15px; font-size: 15px;">I'd really love to have you as mine.</p>
+        <h1 style="font-size: 32px; letter-spacing: 0;">"Be my Valentine?"</h1>
+        <p style="margin-top: 15px; font-size: 16px;">I'd really love to have you as mine.</p>
         
         <div class="btn-group" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-top: 35px;">
             <button id="yes-btn" class="btn-universal" style="margin-top: 0;" onclick="buildFlowers()">Yes, of course!</button>
@@ -159,7 +168,7 @@
             <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" class="petal" style="bottom: 40px; right: 15px; z-index: 2;" id="p3">
             <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" class="petal" style="bottom: 85px; left: 55px; width: 110px; z-index: 5;" id="p4">
         </div>
-        <h3 id="build-text" style="opacity:0; transition: 2.5s; font-size: 16px; margin-top: 30px; font-style: italic; color: #444;">I have a gift for you... but read this first.</h3>
+        <h3 id="build-text" style="opacity:0; transition: 2.5s; font-size: 16px; margin-top: 30px; font-style: italic; color: #444; font-weight: 400;">I have a gift for you... but read this first.</h3>
         <button id="read-btn" style="display:none; opacity: 0;" class="btn-universal" onclick="showLetter()">Read My Note</button>
     </section>
 
@@ -210,7 +219,6 @@
                 btn.style.opacity = '0';
                 setTimeout(() => btn.style.display = 'none', 300);
             } else {
-                // Sekarang tombol bisa lari ke mana saja di layar tanpa terpotong card
                 const x = Math.random() * (window.innerWidth - btn.offsetWidth - 80) + 40;
                 const y = Math.random() * (window.innerHeight - btn.offsetHeight - 80) + 40;
                 btn.style.position = 'fixed';

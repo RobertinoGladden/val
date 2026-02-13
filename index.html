@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Stevyn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --bg: #fdfdfd; 
+            --text: #2a2a2a; 
+            --accent: #333333; 
+            --soft-gray: #f2f2f2;
+            --shadow: rgba(0, 0, 0, 0.04);
+        }
+        
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body, html { 
+            margin: 0; padding: 0; background: var(--bg); 
+            font-family: 'Lora', serif; overflow-x: hidden; 
+            color: var(--text); height: 100%; width: 100%; 
+        }
+
+        section { 
+            height: 100vh; width: 100%; display: flex; 
+            flex-direction: column; justify-content: center; 
+            align-items: center; text-align: center; 
+            padding: 30px; position: fixed; top: 0; left: 0; 
+            transition: opacity 1.2s ease, transform 1.2s ease; 
+            background: var(--bg); 
+        }
+
+        /* Card Decoration */
+        .card-frame {
+            border: 1px solid #ececec;
+            padding: 50px 30px;
+            border-radius: 15px;
+            background: #ffffff;
+            box-shadow: 0 10px 40px var(--shadow);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+        
+        h2 { letter-spacing: 0.5px; font-size: 20px; line-height: 1.6; font-style: italic; color: #555; }
+        
+        /* Soft Rounded Button */
+        .start-btn { 
+            margin-top: 35px; 
+            padding: 14px 40px; 
+            background: var(--accent); 
+            color: #fff; 
+            border: none; 
+            cursor: pointer; 
+            font-family: 'Lora', serif; 
+            font-size: 13px; 
+            letter-spacing: 2px; 
+            border-radius: 50px; /* Fully Rounded */
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            background: #000;
+        }
+
+        /* --- Question & Animation --- */
+        .btn-group { display: flex; gap: 20px; margin-top: 40px; width: 100%; justify-content: center; align-items: center; position: relative; min-height: 100px; }
+        
+        #no-btn { 
+            padding: 12px 30px; 
+            background: var(--soft-gray); 
+            border: none; 
+            border-radius: 50px;
+            cursor: pointer; 
+            font-family: 'Lora', serif; 
+            font-size: 12px; 
+            color: #888;
+            transition: all 0.2s ease; 
+        }
+        
+        #yes-btn { 
+            padding: 15px 45px; 
+            background: var(--accent); 
+            color: #fff; 
+            border: none; 
+            border-radius: 50px;
+            cursor: pointer; 
+            font-family: 'Lora', serif; 
+            font-weight: bold; 
+            font-size: 13px; 
+            z-index: 10; 
+        }
+
+        .flower-box { 
+            position: relative; width: 220px; height: 250px; margin-bottom: 20px; 
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .petal { position: absolute; opacity: 0; transition: 1.5s cubic-bezier(0.25, 1, 0.5, 1); width: 80px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.05)); }
+        .petal.reveal { opacity: 1; transform: scale(1.1); }
+
+        /* --- Letter Wrap --- */
+        #letter-page { display: none; height: 100vh; position: fixed; padding: 40px 20px; overflow-y: auto; background: var(--bg); z-index: 100; width: 100%; opacity: 0; transition: opacity 1.5s ease; }
+        
+        .letter-wrap { max-width: 550px; width: 100%; background: white; padding: 60px 40px; border-radius: 20px; line-height: 2.1; text-align: left; margin: 40px auto; box-shadow: 0 20px 60px var(--shadow); border: 1px solid #f9f9f9; }
+        
+        .letter-wrap p { font-size: 16px; margin-bottom: 25px; color: #444; font-weight: 300; }
+        
+        .reply-btn { display: block; margin-top: 50px; padding: 20px; background: var(--accent); color: #fff; text-decoration: none; font-family: 'Lora', serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; text-align: center; text-transform: uppercase; border-radius: 50px; transition: 0.3s; }
+        
+        .fade-in { animation: fadeIn 3s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <audio id="myAudio" loop>
+        <source src="Best_Part.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="landing">
+        <div class="card-frame">
+            <h2 class="fade-in">I have something for you<br>to make your day today.</h2>
+            <button class="start-btn" onclick="startExperience()">Open</button>
+        </div>
+    </section>
+
+    <section id="special-msg" style="display:none; opacity:0;">
+        <div class="card-frame">
+            <p style="font-size: 11px; letter-spacing: 3px; color: #aaa; text-transform: uppercase; margin-bottom: 20px;">To someone very special</p>
+            <h1 style="font-size: 24px; line-height: 1.6; font-style: italic; color: var(--text);">
+                "I want to celebrate today by showing you how much you mean to me. You are the most special part of my life."
+            </h1>
+            <button class="start-btn" onclick="goToQuestion()">Continue</button>
+        </div>
+    </section>
+
+    <section id="question-page" style="display:none; opacity: 0;">
+        <h1 style="font-size: 32px; margin-bottom: 10px;">Will you be my Valentine?</h1>
+        <p style="font-size: 14px; color: #999; font-style: italic;">Because I'd love to have you as mine.</p>
+        <div class="btn-group">
+            <button id="yes-btn" onclick="buildFlowers()">Yes, of course!</button>
+            <button id="no-btn" onmouseover="moveNo()" onclick="moveNo()">No</button>
+        </div>
+    </section>
+
+    <section id="flower-page" style="display:none; opacity: 0;">
+        <div class="flower-box">
+            <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" class="petal" style="bottom: 0; left: 65px; z-index: 4;" id="p1">
+            <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" class="petal" style="bottom: 40px; left: 15px; z-index: 3;" id="p2">
+            <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" class="petal" style="bottom: 40px; right: 15px; z-index: 2;" id="p3">
+            <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" class="petal" style="bottom: 85px; left: 55px; width: 110px; z-index: 5;" id="p4">
+        </div>
+        <h3 id="build-text" style="opacity:0; transition: 2s; font-size: 15px; margin-top: 30px; font-style: italic; color: #666;">I have a gift for you... but read this first.</h3>
+        <button id="read-btn" style="display:none; opacity: 0;" class="start-btn" onclick="showLetter()">Read My Note</button>
+    </section>
+
+    <section id="letter-page">
+        <div class="letter-wrap">
+            <p style="font-family: 'Playfair Display'; font-weight: bold; font-size: 24px; font-style: italic; margin-bottom: 35px; color: #000;">Hello Stevyn,</p>
+            
+            <p>I’ve been thinking about how much you’ve changed my life lately, and I realized that some things deserve to be said, not just felt. Having you in my life, even from a distance, truly makes everything feel a little lighter and the hard days much easier to face.</p>
+            
+            <p>I want you to know how much you mean to me; I notice every small thing you do, your patience, and the kindness you give so effortlessly. You make me feel seen, supported, and accepted for who I am, and honestly, being with you—even just in spirit—feels like home.</p>
+
+            <p>Even though we don’t get to talk over the phone as often as I’d like, I want you to know that I truly love hearing your voice; it’s a comfort that I look forward to more than you might realize. I appreciate the way you carry yourself and the warmth you bring into my life just by being who you are.</p>
+
+            <p style="font-style: italic; color: #777; border-left: 2px solid #ccc; padding-left: 25px; margin: 40px 0; font-size: 18px;">"I’ll leave the rest for when I see you."</p>
+            
+            <p>With all my love,<br><span style="font-family: 'Playfair Display'; font-size: 22px; color: #000; font-weight: 700;">Robertino</span></p>
+            
+            <a href="https://wa.me/6281317251029?text=Yes%20Robertino%2C%20I'd%20love%20to.%20Here%20is%20my%20address%20for%20the%20flowers..." class="reply-btn">Send Address</a>
+        </div>
+    </section>
+
+    <script>
+        let scale = 1;
+        const audio = document.getElementById("myAudio");
+
+        function startExperience() {
+            audio.play().catch(e => console.log("Audio play failed:", e));
+            fadeOut('landing', () => { showSection('special-msg'); });
+        }
+
+        function goToQuestion() {
+            fadeOut('special-msg', () => { showSection('question-page'); });
+        }
+
+        function moveNo() {
+            const btn = document.getElementById('no-btn');
+            scale -= 0.15;
+            if (scale <= 0.2) {
+                btn.style.opacity = '0';
+                setTimeout(() => btn.style.display = 'none', 300);
+            } else {
+                const x = Math.random() * (window.innerWidth - btn.offsetWidth - 80) + 40;
+                const y = Math.random() * (window.innerHeight - btn.offsetHeight - 80) + 40;
+                btn.style.position = 'fixed';
+                btn.style.left = x + 'px';
+                btn.style.top = y + 'px';
+                btn.style.transform = `scale(${scale})`;
+            }
+        }
+
+        function buildFlowers() {
+            fadeOut('question-page', () => {
+                showSection('flower-page');
+                setTimeout(() => document.getElementById('p1').classList.add('reveal'), 600);
+                setTimeout(() => document.getElementById('p2').classList.add('reveal'), 1400);
+                setTimeout(() => document.getElementById('p3').classList.add('reveal'), 2200);
+                setTimeout(() => document.getElementById('p4').classList.add('reveal'), 3000);
+                setTimeout(() => {
+                    document.getElementById('build-text').style.opacity = '1';
+                    const rb = document.getElementById('read-btn');
+                    rb.style.display = 'block';
+                    setTimeout(() => rb.style.opacity = '1', 200);
+                }, 4500);
+            });
+        }
+
+        function showLetter() {
+            fadeOut('flower-page', () => {
+                const lp = document.getElementById('letter-page');
+                lp.style.display = 'block';
+                setTimeout(() => lp.style.opacity = '1', 100);
+            });
+        }
+
+        function fadeOut(id, callback) {
+            const el = document.getElementById(id);
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-10px)';
+            setTimeout(() => { 
+                el.style.display = 'none'; 
+                if (callback) callback(); 
+            }, 1000);
+        }
+
+        function showSection(id) {
+            const el = document.getElementById(id);
+            el.style.display = 'flex';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 100);
+        }
+    </script>
+</body>
+</html>

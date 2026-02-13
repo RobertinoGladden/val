@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>for a limited edition girl.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>for a limited edition girl!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --bg: #fdfdfd; 
-            --text: #2a2a2a; 
+            --text: #1a1a1a; 
             --accent: #1a1a1a; 
-            --soft-gray: #f8f8f8;
-            --shadow: rgba(0, 0, 0, 0.05);
             --border: #eeeeee;
+            --shadow: rgba(0, 0, 0, 0.05);
         }
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -75,88 +74,45 @@
         .card-frame::before { top: 20px; left: 20px; border-right: none; border-bottom: none; }
         .card-frame::after { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
-        h1, h2, h3 { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 400;
-            margin: 0;
-        }
-        
-        h2 { letter-spacing: 0.5px; font-size: 20px; line-height: 1.6; font-style: italic; color: #444; }
-        
-        .start-btn { 
+        .btn-universal {
             margin-top: 35px; 
             padding: 16px 45px; 
             background: var(--accent); 
             color: #fff; 
-            border: 1px solid var(--accent); 
+            border: none; 
             cursor: pointer; 
-            font-family: 'Lora', serif; 
+            font-family: 'Inter', sans-serif; 
             font-size: 13px; 
-            letter-spacing: 3px; 
+            font-weight: 600;
+            letter-spacing: 2px; 
             border-radius: 50px;
             text-transform: uppercase;
             transition: all 0.4s ease;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        .start-btn:hover { background: transparent; color: var(--accent); transform: translateY(-3px); }
-
-        /* KHUSUS PAGE WILL YOU */
-        #question-page h1 {
-            font-family: 'Inter', sans-serif; /* Font beda sendiri */
-            font-weight: 700;
-            font-size: 34px;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        #question-page p {
-            font-family: 'Inter', sans-serif; /* Font beda sendiri */
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        #yes-btn { 
-            padding: 16px 45px; 
-            background: var(--accent); 
-            color: #fff; 
-            border-radius: 50px; /* Tetap Rounded */
-            border: none; 
-            cursor: pointer; 
-            font-family: 'Inter', sans-serif; /* Font tombol beda sendiri */
-            font-weight: 700; 
-            transition: 0.3s; 
-            font-size: 14px;
-        }
-        
         #no-btn { 
             padding: 12px 30px; 
             background: #fff; 
-            color: #999; 
+            color: #ccc; 
             border: 1px solid #eee; 
-            border-radius: 50px; /* Tetap Rounded */
+            border-radius: 50px;
             cursor: pointer; 
             font-family: 'Inter', sans-serif;
             transition: 0.2s; 
-            font-size: 13px;
+            font-size: 12px;
+            z-index: 100;
         }
 
-        /* FLOWER & LETTER SECTION */
         .flower-box { position: relative; width: 220px; height: 250px; margin-bottom: 20px; animation: floating 4s ease-in-out infinite; }
         @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
         .petal { position: absolute; opacity: 0; transition: 1.8s ease; width: 85px; }
         .petal.reveal { opacity: 1; transform: scale(1.1); }
 
         #letter-page { display: none; height: 100vh; position: fixed; padding: 40px 20px; overflow-y: auto; background: var(--bg); z-index: 100; width: 100%; opacity: 0; transition: opacity 1.5s ease; }
         .letter-wrap { max-width: 550px; width: 100%; background: white; padding: 60px 40px; border-radius: 20px; line-height: 2.2; text-align: left; margin: 40px auto; box-shadow: 0 25px 70px var(--shadow); border: 1px solid #f0f0f0; }
-        .letter-wrap p { font-size: 16px; margin-bottom: 25px; color: #444; font-weight: 300; }
         
         .reply-btn { display: block; margin-top: 50px; padding: 20px; background: var(--accent); color: #fff; text-decoration: none; font-family: 'Lora', serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; text-align: center; text-transform: uppercase; border-radius: 50px; }
-
-        .fade-in { animation: fadeIn 3s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -169,8 +125,8 @@
 
     <section id="landing">
         <div class="card-frame">
-            <h2 class="fade-in">I have something for you<br>to make your day today.</h2>
-            <button class="start-btn" onclick="startExperience()">Open</button>
+            <h2 style="font-style: italic; color: #444;">I have something for you<br>to make your day today.</h2>
+            <button class="btn-universal" onclick="startExperience()">Open</button>
         </div>
     </section>
 
@@ -180,15 +136,18 @@
             <h1 style="font-size: 24px; line-height: 1.6; font-style: italic; color: var(--text);">
                 "I want to celebrate today by showing you how much you mean to me. You are the most special part of my life."
             </h1>
-            <button class="start-btn" onclick="goToQuestion()">Continue</button>
+            <button class="btn-universal" onclick="goToQuestion()">Continue</button>
         </div>
     </section>
 
     <section id="question-page" style="display:none; opacity: 0;">
-        <h1>Will you be my Valentine?</h1>
-        <p>Because I'd love to have you as mine.</p>
-        <div class="btn-group" style="display: flex; gap: 20px; justify-content: center; align-items: center;">
-            <button id="yes-btn" onclick="buildFlowers()">Yes, of course!</button>
+        <h1 style="font-style: italic; font-weight: 700; font-size: 28px; line-height: 1.4; max-width: 80%;">
+            "Be my Valentine?"
+        </h1>
+        <p style="font-style: italic; color: #777; margin-top: 15px; font-size: 15px;">I'd really love to have you as mine.</p>
+        
+        <div class="btn-group" style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-top: 35px;">
+            <button id="yes-btn" class="btn-universal" style="margin-top: 0;" onclick="buildFlowers()">Yes, of course!</button>
             <button id="no-btn" onmouseover="moveNo()" onclick="moveNo()">No</button>
         </div>
     </section>
@@ -200,14 +159,14 @@
             <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" class="petal" style="bottom: 40px; right: 15px; z-index: 2;" id="p3">
             <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" class="petal" style="bottom: 85px; left: 55px; width: 110px; z-index: 5;" id="p4">
         </div>
-        <h3 id="build-text" style="opacity:0; transition: 2.5s; font-size: 15px; margin-top: 30px; font-style: italic; color: #666;">I have a gift for you... but read this first.</h3>
-        <button id="read-btn" style="display:none; opacity: 0;" class="start-btn" onclick="showLetter()">Read My Note</button>
+        <h3 id="build-text" style="opacity:0; transition: 2.5s; font-size: 16px; margin-top: 30px; font-style: italic; color: #444;">I have a gift for you... but read this first.</h3>
+        <button id="read-btn" style="display:none; opacity: 0;" class="btn-universal" onclick="showLetter()">Read My Note</button>
     </section>
 
     <section id="letter-page">
         <div class="letter-wrap">
             <p style="font-family: 'Playfair Display'; font-weight: bold; font-size: 24px; font-style: italic; margin-bottom: 35px; color: #000;">Hi Stevyn,</p>
-            <p>I was sitting here thinking about everything lately, and I realized that some things are better said than just kept in my head. I wanted to tell you that having you in my life—even with the distance between us—truly makes my days feel a lot brighter and the heavy moments much easier to get through. <strong>And I truly hope that, in some way, my presence does the same for you.</strong></p>
+            <p>I was sitting here thinking about everything lately, and I realized that some things are better said than just kept in my head. I wanted to tell you that having you in my life—even with the distance between us—truly makes my days feel a lot brighter. <strong>And I truly hope that, in some way, my presence does the same for you.</strong></p>
             <p>I notice the small things, you know? Your patience, the way you carry yourself, and that effortless kindness you have. It’s rare to find someone who makes you feel so seen and supported just by being themselves, but you do that for me. Honestly, just talking to you feels like a breath of fresh air.</p>
             <p>I know we don’t get to talk over the phone as much as I'd like, but I want you to know that I really cherish those moments. Your voice is a comfort I’ve grown to look forward to more than you might realize. You’ve brought a certain warmth into my life that I didn't know I was missing, and I’m so grateful for that.</p>
             <p>I don't want to overcomplicate things with words. I might play it cool most of the time, but I’m stepping out of my shell to say this: I really, truly enjoy being part of your world. These flowers are just a small way for me to show that I'm thinking of you and that I care about you, more than a simple text could ever explain.</p>
@@ -251,6 +210,7 @@
                 btn.style.opacity = '0';
                 setTimeout(() => btn.style.display = 'none', 300);
             } else {
+                // Sekarang tombol bisa lari ke mana saja di layar tanpa terpotong card
                 const x = Math.random() * (window.innerWidth - btn.offsetWidth - 80) + 40;
                 const y = Math.random() * (window.innerHeight - btn.offsetHeight - 80) + 40;
                 btn.style.position = 'fixed';
@@ -292,12 +252,7 @@
 
         function showSection(id) {
             const el = document.getElementById(id);
-            if (id === 'question-page') {
-                el.style.display = 'block'; // Bukan flex agar center text bekerja manual
-                el.style.paddingTop = '40vh'; // Menjaga teks di tengah layar
-            } else {
-                el.style.display = 'flex';
-            }
+            el.style.display = 'flex';
             setTimeout(() => { 
                 el.style.opacity = '1'; 
                 el.style.transform = 'translateY(0)'; 
